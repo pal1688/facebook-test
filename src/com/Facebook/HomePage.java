@@ -4,39 +4,43 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
 
 public class HomePage {
 	
 	@Test
-	public void Login() {
+	public void Login() throws InterruptedException {
 
 	
 		System.setProperty("webdriver.chrome.driver","/Users/pal/Downloads/chromedriver");
 		WebDriver driver = new ChromeDriver();
 	    driver.get("facebook.com");
 	    
+	    driver.findElement(By.id("email")).sendKeys("swapal1982@gmail.com");
 	    
 	    
-	    WebElement newele = driver.findElement(By.id("email")).click();
-	    newele.sendKeys("swappal@gmail.com");
 	    
-	    driver.findElement(By.id("pass")).click();
-	    newele.sendkeys("Silverspoon@20008");
 	   
-	    driver.findElement(By.value("Log In")).click
-	    driver.findElement(By.
+	    
+	   WebElement elePass = driver.findElement(By.id("pass"));
+	   elePass.click();
+	   elePass.sendKeys("Silverspoon@20008");
+	   
+	    driver.findElement(By.xpath("//input[(@value='Log In')")).click();
+	    
 	
-	    try {
+	    
 	    Thread.sleep(20000);
 		driver.findElement(By.xpath("//a/span[contains(text(),'Swappal'"));  //CHECK XPATH
 	    driver.findElement(By.xpath("//div[contains text(),'Swappal Binakar']"));//chekck
-	    }
-	    catch(Exception){
-	    	System.out.println("fields on login page not found");
-	    	
-	    }
 	    
+	 
+	    Assert.assertEquals("Swappal Binakar", driver.getTitle()); 
 	    
+	    Assert.assertEquals("https://www.facebook.com/swappal.binakar.7", driver.getCurrentUrl());
+	   
 	    
 	    
 	}
