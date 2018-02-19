@@ -18,7 +18,7 @@ public class HomePage {
 
 		System.setProperty("webdriver.chrome.driver","/Users/pal/Downloads/chromedriver");
 		WebDriver driver = new ChromeDriver();
-		driver.get("facebook.com");
+		driver.get("http://facebook.com");
 
 		driver.findElement(By.id("email")).sendKeys("swapal1982@gmail.com");
 
@@ -81,10 +81,25 @@ public class HomePage {
 		    
 		    driver.findElement(By.xpath("//input[@value='Log In']")).click();
 		    
-		    driver.findElement(By.xpath("//div/div[contains text(),'Forgot your password?']");
+		    Assert.assertEquals(driver.findElements(By.xpath("//div[contains text(),'The password you’ve entered is incorrect.'")), "The password you’ve entered is incorrect. ");
+		    
+		    driver.findElement(By.xpath("//div/div[contains text(),'Forgot your password?']")).click();
+		    
+		    driver.findElement(By.xpath("//a[contains text(),'Recover Your Account']")).click();
+		    
+		    	
+		    driver.navigate().to("gmail.com");
+		    driver.findElement(By.tagName("Sign In")).click();
+		    driver.findElement(By.id("identifierId")).sendKeys("swapal1982@gmail.com");
+		    driver.findElement(By.xpath("//content/span[contains text(),'Next'"));
+		    driver.findElement(By.name("password")).sendKeys("swap&pal@423");
+		    driver.findElement(By.xpath("//content/span[contains text(),'Next'"));
 		    
 		    
-		
+		    
+		    
+		    
+		    
 		
 		
 		
